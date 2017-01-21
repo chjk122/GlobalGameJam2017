@@ -21,18 +21,15 @@ void AWaveSpawner::BeginPlay()
 
 // Called every frame
 float count = 0;
+float totalTime = 0;
 void AWaveSpawner::Tick( float DeltaTime )
 {
 	count += DeltaTime;
+	totalTime += DeltaTime;
 	Super::Tick( DeltaTime );
 	UWorld *world = GetWorld();
-	if (count >= 1)
+	if (count >= .05)
 	{
-		world->SpawnActor<AwaveObj>(AwaveObj::StaticClass());
-		FVector scale = GetActorScale3D();
-		scale.Z += 1;
-		SetActorScale3D(scale);
-		count = 0;
 
 		FVector loc = GetActorLocation();
 		FActorSpawnParameters spawnParams;
@@ -40,8 +37,15 @@ void AWaveSpawner::Tick( float DeltaTime )
 		spawnParams.Instigator = Instigator;
 
 		// spawn the object now 
-		AwaveObj* ourNewObject = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
-
+		AwaveObj* waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
+		waveSpawned->Construct(cosf(totalTime), sinf(totalTime));
+		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
+		waveSpawned->Construct(cosf(totalTime + PI / 2), sinf(totalTime + PI / 2));
+		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
+		waveSpawned->Construct(cosf(totalTime + PI), sinf(totalTime + PI));
+		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
+		waveSpawned->Construct(cosf(totalTime + 3*PI / 2), sinf(totalTime + 3*PI / 2));
+		count = 0;
 	}
 }
 

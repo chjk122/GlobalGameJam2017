@@ -10,9 +10,13 @@ class WAVE_API AwaveObj : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+public:
+	float xDir;
+	float yDir;
 	// Sets default values for this actor's properties
 	AwaveObj();
+
+	virtual void Construct(float x, float y);
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

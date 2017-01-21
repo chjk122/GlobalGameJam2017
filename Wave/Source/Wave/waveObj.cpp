@@ -12,6 +12,12 @@ AwaveObj::AwaveObj()
 
 }
 
+void AwaveObj::Construct(float x, float y)
+{
+	xDir = x;
+	yDir = y;
+}
+
 // Called when the game starts or when spawned
 void AwaveObj::BeginPlay()
 {
@@ -26,10 +32,10 @@ void AwaveObj::BeginPlay()
 void AwaveObj::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
-	FVector scale = GetActorScale3D();
-	scale.X += .1;
-	scale.Y += .1;
-	SetActorScale3D(scale);
+	FVector loc = GetActorLocation();
+	loc.X += xDir * 10;
+	loc.Y += yDir * 10;
+	SetActorLocation(loc);
 
 }
 
