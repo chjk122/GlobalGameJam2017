@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "waveObj.h"
 #include "GameFramework/Actor.h"
 #include "WaveSpawner.generated.h"
 
@@ -20,6 +21,7 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	
+	UPROPERTY(EditDefaultsOnly, Category = "Our Spawning Object")
+    TSubclassOf<AwaveObj> wave;
 	
 };

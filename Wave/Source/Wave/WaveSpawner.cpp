@@ -2,7 +2,6 @@
 
 #include "Wave.h"
 #include "WaveSpawner.h"
-#include "waveObj.h"
 
 
 // Sets default values
@@ -34,6 +33,15 @@ void AWaveSpawner::Tick( float DeltaTime )
 		scale.Z += 1;
 		SetActorScale3D(scale);
 		count = 0;
+
+		FVector loc = GetActorLocation();
+		FActorSpawnParameters spawnParams;
+		spawnParams.Owner = this;
+		spawnParams.Instigator = Instigator;
+
+		// spawn the object now 
+		AwaveObj* ourNewObject = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
+
 	}
 }
 
