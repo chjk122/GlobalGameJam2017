@@ -12,7 +12,7 @@ class WAVE_API AWaveSpawner : public AActor
 	GENERATED_BODY()
 	
 public:	
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UPROPERTY(EditAnywhere)
 	bool isActive = false;
 	UPROPERTY(EditAnywhere)
 	int levelNum;
@@ -34,6 +34,9 @@ public:
 	virtual void ThirtyTwoCircleHalfMidHalfFloor(float dt);
 	virtual void EightCircleTwinSpiral(float dt, float t);
 	virtual void PizzaSliceRotatingPulse(float dt, float t);
+	virtual void Ring(float dt);
+	virtual void LongPulseStarLines(float dt);
+	virtual void TwinOval(float dt);
 
 	UPROPERTY(EditDefaultsOnly, Category = "Our Spawning Object")
     TSubclassOf<AwaveObj> wave;
