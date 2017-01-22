@@ -1,0 +1,130 @@
+Begin Object Class=Material Name="Generator_Material"
+   Begin Object Class=MaterialExpressionMultiply Name="MaterialExpressionMultiply_1"
+   End Object
+   Begin Object Class=MaterialExpressionScalarParameter Name="MaterialExpressionScalarParameter_0"
+   End Object
+   Begin Object Class=MaterialExpressionTextureSample Name="MaterialExpressionTextureSample_13"
+   End Object
+   Begin Object Class=MaterialExpressionTextureSample Name="MaterialExpressionTextureSample_12"
+   End Object
+   Begin Object Class=MaterialExpressionMultiply Name="MaterialExpressionMultiply_0"
+   End Object
+   Begin Object Class=MaterialExpressionTextureSample Name="MaterialExpressionTextureSample_9"
+   End Object
+   Begin Object Class=MaterialExpressionTextureSample Name="MaterialExpressionTextureSample_11"
+   End Object
+   Begin Object Class=MaterialExpressionTextureSample Name="MaterialExpressionTextureSample_10"
+   End Object
+   Begin Object Class=MaterialExpressionTextureSample Name="MaterialExpressionTextureSample_8"
+   End Object
+   Begin Object Class=MaterialExpressionTextureSample Name="MaterialExpressionTextureSample_7"
+   End Object
+   Begin Object Class=SceneThumbnailInfoWithPrimitive Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   Begin Object Name="MaterialExpressionMultiply_1"
+      A=(Expression=MaterialExpressionTextureSample'Generator_Material:MaterialExpressionTextureSample_12',Mask=1,MaskR=1,MaskG=1,MaskB=1)
+      B=(Expression=MaterialExpressionTextureSample'Generator_Material:MaterialExpressionTextureSample_13',Mask=1,MaskR=1,MaskG=1,MaskB=1)
+      MaterialExpressionEditorX=-336
+      MaterialExpressionEditorY=160
+      MaterialExpressionGuid=7DE2F8BD4B75E96CF038C0A0B8BE939C
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionScalarParameter_0"
+      DefaultValue=50.000000
+      ParameterName="Emissive param"
+      ExpressionGUID=653FDBC14D611752F6FB0ABB3090BAE1
+      MaterialExpressionEditorX=-368
+      MaterialExpressionEditorY=272
+      MaterialExpressionGuid=97CE84694B78E941D36A08B42C04987C
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionTextureSample_13"
+      Texture=Texture2D'/Game/ThirdPersonBP/art/Generator_EmissiveIntensity.Generator_EmissiveIntensity'
+      MaterialExpressionEditorX=-592
+      MaterialExpressionEditorY=224
+      MaterialExpressionGuid=1431334845B19A212E61D4AF37FEB409
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionTextureSample_12"
+      Texture=Texture2D'/Game/ThirdPersonBP/art/Generator_EmissiveColor.Generator_EmissiveColor'
+      MaterialExpressionEditorX=-592
+      MaterialExpressionEditorY=16
+      MaterialExpressionGuid=F322FB1E4900529F3CFD18A3529C7DE6
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionMultiply_0"
+      A=(Expression=MaterialExpressionMultiply'Generator_Material:MaterialExpressionMultiply_1')
+      B=(Expression=MaterialExpressionScalarParameter'Generator_Material:MaterialExpressionScalarParameter_0')
+      MaterialExpressionEditorX=-144
+      MaterialExpressionEditorY=160
+      MaterialExpressionGuid=28A99C024421DD5BA4FC1091117E3E6A
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionTextureSample_9"
+      Texture=Texture2D'/Game/ThirdPersonBP/art/Generator_ao.Generator_ao'
+      MaterialExpressionEditorX=-240
+      MaterialExpressionEditorY=432
+      MaterialExpressionGuid=D7783D194CD9A7814542C6A644368D9B
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionTextureSample_11"
+      Texture=Texture2D'/Game/ThirdPersonBP/art/Generator_Normal.Generator_Normal'
+      SamplerType=SAMPLERTYPE_Normal
+      MaterialExpressionEditorX=-416
+      MaterialExpressionEditorY=432
+      MaterialExpressionGuid=BFA60EBF44A6E80215088DB00189477F
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionTextureSample_10"
+      Texture=Texture2D'/Game/ThirdPersonBP/art/Generator_Roughness.Generator_Roughness'
+      MaterialExpressionEditorX=-416
+      MaterialExpressionEditorY=-160
+      MaterialExpressionGuid=3B9DA9854868990D7BABE4938FB94B99
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionTextureSample_8"
+      Texture=Texture2D'/Game/ThirdPersonBP/art/Generator_Metalness.Generator_Metalness'
+      MaterialExpressionEditorX=-240
+      MaterialExpressionEditorY=-160
+      MaterialExpressionGuid=D41C19994E41A080591360A6F38D7F85
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="MaterialExpressionTextureSample_7"
+      Texture=Texture2D'/Game/ThirdPersonBP/art/Generator_BaseColor.Generator_BaseColor'
+      MaterialExpressionEditorX=-80
+      MaterialExpressionEditorY=-160
+      MaterialExpressionGuid=CB1DCC9544E5D8A729A935AB025E732C
+      Material=Material'Generator_Material'
+   End Object
+   Begin Object Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   BaseColor=(Expression=MaterialExpressionTextureSample'MaterialExpressionTextureSample_7',Mask=1,MaskR=1,MaskG=1,MaskB=1)
+   Metallic=(Expression=MaterialExpressionTextureSample'MaterialExpressionTextureSample_8',Mask=1,MaskR=1,MaskG=1,MaskB=1)
+   Roughness=(Expression=MaterialExpressionTextureSample'MaterialExpressionTextureSample_10',Mask=1,MaskR=1,MaskG=1,MaskB=1)
+   Normal=(Expression=MaterialExpressionTextureSample'MaterialExpressionTextureSample_11',Mask=1,MaskR=1,MaskG=1,MaskB=1)
+   EmissiveColor=(Expression=MaterialExpressionMultiply'MaterialExpressionMultiply_0')
+   AmbientOcclusion=(Expression=MaterialExpressionTextureSample'MaterialExpressionTextureSample_9',Mask=1,MaskR=1,MaskG=1,MaskB=1)
+   EditorX=272
+   EditorY=32
+   Expressions(0)=MaterialExpressionTextureSample'MaterialExpressionTextureSample_7'
+   Expressions(1)=MaterialExpressionTextureSample'MaterialExpressionTextureSample_8'
+   Expressions(2)=MaterialExpressionTextureSample'MaterialExpressionTextureSample_10'
+   Expressions(3)=MaterialExpressionTextureSample'MaterialExpressionTextureSample_11'
+   Expressions(4)=MaterialExpressionTextureSample'MaterialExpressionTextureSample_9'
+   Expressions(5)=MaterialExpressionTextureSample'MaterialExpressionTextureSample_12'
+   Expressions(6)=MaterialExpressionTextureSample'MaterialExpressionTextureSample_13'
+   Expressions(7)=MaterialExpressionMultiply'MaterialExpressionMultiply_0'
+   Expressions(8)=MaterialExpressionScalarParameter'MaterialExpressionScalarParameter_0'
+   Expressions(9)=MaterialExpressionMultiply'MaterialExpressionMultiply_1'
+   bCanMaskedBeAssumedOpaque=True
+   StateId=306AF74040AA5BB1AD5196959F110C2B
+   ReferencedTextureGuids(0)=B79B52A44D5B6F587CEEEAB934ACC419
+   ReferencedTextureGuids(1)=C625A9A44D32856A6113E88072FF9B82
+   ReferencedTextureGuids(2)=B7C178A840E4C582E66929ADEF99085C
+   ReferencedTextureGuids(3)=C2E17B08403E6BC9730275A2AAF58A64
+   ReferencedTextureGuids(4)=3639A50D44D47E71D2FC9F8BCBB914CB
+   ReferencedTextureGuids(5)=12805E1742906868385E64A70F63B9C2
+   ReferencedTextureGuids(6)=BDAE43DD48833F8127ECBCBF24C08CED
+   ThumbnailInfo=SceneThumbnailInfoWithPrimitive'SceneThumbnailInfoWithPrimitive_0'
+   LightingGuid=48CA6737492BB22C3C3949A1B2D16B12
+End Object
