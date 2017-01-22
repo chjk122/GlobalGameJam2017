@@ -28,7 +28,7 @@ void AWaveSpawner::Tick( float DeltaTime )
 	totalTime += DeltaTime;
 	Super::Tick( DeltaTime );
 	UWorld *world = GetWorld();
-	if (count >= .05)
+	if (count >= 1.05)
 	{
 
 		FVector loc = GetActorLocation();
