@@ -30,8 +30,8 @@ void AwaveObj::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 	FVector loc = GetActorLocation();
-	loc.X += xDir * 13;
-	loc.Y += yDir * 13;
+	loc.X += xDir * 10;
+	loc.Y += yDir * 10;
 	SetActorLocation(loc);
 
 }
