@@ -14,6 +14,13 @@ class WAVE_API AWaveSpawner : public AActor
 public:	
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	bool isActive = false;
+	UPROPERTY(EditAnywhere)
+	int levelNum;
+	FVector loc;
+	FRotator rotation;
+	FActorSpawnParameters spawnParams;
+	UWorld *world;
+
 	// Sets default values for this actor's properties
 	AWaveSpawner();
 
@@ -22,6 +29,11 @@ public:
 	
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
+
+	virtual void SpawnFourLegSpiral(float dt, float t);
+	virtual void ThirtyTwoCircleHalfMidHalfFloor(float dt);
+	virtual void EightCircleTwinSpiral(float dt, float t);
+	virtual void PizzaSliceRotatingPulse(float dt, float t);
 
 	UPROPERTY(EditDefaultsOnly, Category = "Our Spawning Object")
     TSubclassOf<AwaveObj> wave;

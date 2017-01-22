@@ -16,7 +16,11 @@ AWaveSpawner::AWaveSpawner()
 void AWaveSpawner::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	world = GetWorld();
+	loc = GetActorLocation();
+	rotation = GetActorRotation();
+	spawnParams.Owner = this;
+	spawnParams.Instigator = Instigator;
 }
 
 // Called every frame
@@ -24,28 +28,87 @@ float count = 0;
 float totalTime = 0;
 void AWaveSpawner::Tick( float DeltaTime )
 {
-	count += DeltaTime;
-	totalTime += DeltaTime;
-	Super::Tick( DeltaTime );
-	UWorld *world = GetWorld();
-	if (count >= .05)
+	if (isActive)
 	{
-
-		FVector loc = GetActorLocation();
-		FActorSpawnParameters spawnParams;
-		spawnParams.Owner = this;
-		spawnParams.Instigator = Instigator;
-
-		// spawn the object now 
-		AwaveObj* waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
-		waveSpawned->Construct(cosf(totalTime), sinf(totalTime));
-		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
-		waveSpawned->Construct(cosf(totalTime + PI / 2), sinf(totalTime + PI / 2));
-		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
-		waveSpawned->Construct(cosf(totalTime + PI), sinf(totalTime + PI));
-		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, GetActorRotation(), spawnParams);
-		waveSpawned->Construct(cosf(totalTime + 3*PI / 2), sinf(totalTime + 3*PI / 2));
-		count = 0;
+		count += DeltaTime;
+		totalTime += DeltaTime;
+		Super::Tick(DeltaTime);
+		// 4 leg spiral
+		if (levelNum == 1)
+		{
+			SpawnFourLegSpiral(DeltaTime, totalTime);
+		}
+		if (levelNum == 2)
+		{
+			//ThirtyTwoCircleHalfMidHalfFloor(DeltaTime);
+			EightCircleTwinSpiral(DeltaTime, totalTime);
+		}
 	}
 }
 
+float num1Count = 0;
+void AWaveSpawner::SpawnFourLegSpiral(float dt, float t)
+{
+	if (num1Count < .05)
+	{
+		num1Count += dt;
+		return;
+	}
+	AwaveObj* waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+	waveSpawned->Construct(cosf(t), sinf(t));
+	waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+	waveSpawned->Construct(cosf(t + PI / 2), sinf(t + PI / 2));
+	waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+	waveSpawned->Construct(cosf(t + PI), sinf(t + PI));
+	waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+	waveSpawned->Construct(cosf(t + 3 * PI / 2), sinf(t + 3 * PI / 2));
+	num1Count = 0;
+}
+
+float thirtyTwoTemp = 0;
+float num2Count = 0;
+void AWaveSpawner::ThirtyTwoCircleHalfMidHalfFloor(float dt)
+{
+	if (num2Count < 1)
+	{
+		num2Count += dt;
+		return;
+	}
+	AwaveObj* waveSpawned;
+	int max = 32;
+	for (int x = 0; x < max; x++)
+	{
+		FVector tempLoc = loc;
+		if (x % 2 == 0)
+			tempLoc.Z += 100;
+		waveSpawned = world->SpawnActor<AwaveObj>(wave, tempLoc, rotation, spawnParams);
+		waveSpawned->Construct(cosf((x*PI) / (max/2) + thirtyTwoTemp), sinf(x*PI / (max / 2) + thirtyTwoTemp));
+	}
+	thirtyTwoTemp += 1.0 / (max/2);
+	num2Count = 0;
+}
+
+float num3Count = 0;
+void AWaveSpawner::EightCircleTwinSpiral(float dt, float t)
+{
+	if (num3Count < .075)
+	{
+		num3Count += dt;
+		return;
+	}
+	AwaveObj* waveSpawned;
+	int max = 4;
+	for (int x = 0; x < max; x++)
+	{
+		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+		waveSpawned->Construct(cosf(t + x * PI / 2 - PI / 32), -sinf(t + x * PI / 2 - PI / 32));
+		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+		waveSpawned->Construct(cosf(t + x * PI / 2 + PI / 32), sinf(t + x * PI / 2 + PI / 32));
+	}
+	num3Count = 0;
+}
+
+void AWaveSpawner::PizzaSliceRotatingPulse(float dt, float t)
+{
+
+}
