@@ -108,7 +108,22 @@ void AWaveSpawner::EightCircleTwinSpiral(float dt, float t)
 	num3Count = 0;
 }
 
+float num4Count = 0;
 void AWaveSpawner::PizzaSliceRotatingPulse(float dt, float t)
 {
-
+	if (num4Count < .33)
+	{
+		num4Count += dt;
+		return;
+	}
+	AwaveObj* waveSpawned;
+	int max = 12;
+	for (int x = 0; x < max; x+=2)
+	{
+		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+		waveSpawned->Construct(cosf(t + x * PI / 2 - PI / 32), -sinf(t + x * PI / 2 - PI / 32));
+		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+		waveSpawned->Construct(cosf(t + x * PI / 2 + PI / 32), sinf(t + x * PI / 2 + PI / 32));
+	}
+	num4Count = 0;
 }
