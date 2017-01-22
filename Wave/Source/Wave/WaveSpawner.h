@@ -12,6 +12,8 @@ class WAVE_API AWaveSpawner : public AActor
 	GENERATED_BODY()
 	
 public:	
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	bool isActive = false;
 	// Sets default values for this actor's properties
 	AWaveSpawner();
 

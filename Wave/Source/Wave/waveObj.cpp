@@ -22,9 +22,6 @@ void AwaveObj::Construct(float x, float y)
 void AwaveObj::BeginPlay()
 {
 	Super::BeginPlay();
-	//bHidden = true;
-	//FRotator rot = GetActorRotation();
-	//FVector pos = GetActorLocation()
 
 }
 
@@ -33,8 +30,8 @@ void AwaveObj::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 	FVector loc = GetActorLocation();
-	loc.X += xDir * 10;
-	loc.Y += yDir * 10;
+	loc.X += xDir * 13;
+	loc.Y += yDir * 13;
 	SetActorLocation(loc);
 
 }
