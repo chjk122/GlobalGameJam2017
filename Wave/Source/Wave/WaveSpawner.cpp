@@ -37,7 +37,7 @@ void AWaveSpawner::Tick( float DeltaTime )
 		if (levelNum == 1)
 		{
 			Ring(DeltaTime);
-			PizzaSliceRotatingPulse(DeltaTime, totalTime);
+			//PizzaSliceRotatingPulse(DeltaTime, totalTime);
 			
 		}
 		if (levelNum == 2)
@@ -48,10 +48,12 @@ void AWaveSpawner::Tick( float DeltaTime )
 		if (levelNum == 3)
 		{
 			EightCircleTwinSpiral(DeltaTime, totalTime);
+			LongPulseStarLines(DeltaTime);
 		}
 		if (levelNum == 4)
 		{
 			LongPulseStarLines(DeltaTime);
+			Ring(DeltaTime);
 		}
 		//SpawnFourLegSpiral(DeltaTime, totalTime);
 		//ThirtyTwoCircleHalfMidHalfFloor(DeltaTime);
@@ -72,12 +74,12 @@ void AWaveSpawner::SpawnFourLegSpiral(float dt, float t)
 	}
 	AwaveObj* waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
 	waveSpawned->Construct(cosf(t), sinf(t));
-	waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
-	waveSpawned->Construct(cosf(t + PI / 2), sinf(t + PI / 2));
+	//waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+	//waveSpawned->Construct(cosf(t + PI / 2), sinf(t + PI / 2));
 	waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
 	waveSpawned->Construct(cosf(t + PI), sinf(t + PI));
-	waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
-	waveSpawned->Construct(cosf(t + 3 * PI / 2), sinf(t + 3 * PI / 2));
+	//waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
+	//waveSpawned->Construct(cosf(t + 3 * PI / 2), sinf(t + 3 * PI / 2));
 	num1Count = 0;
 }
 
@@ -85,7 +87,7 @@ float thirtyTwoTemp = 0;
 float num2Count = 0;
 void AWaveSpawner::ThirtyTwoCircleHalfMidHalfFloor(float dt)
 {
-	if (num2Count < 1)
+	if (num2Count < 2)
 	{
 		num2Count += dt;
 		return;
@@ -107,7 +109,7 @@ void AWaveSpawner::ThirtyTwoCircleHalfMidHalfFloor(float dt)
 float num3Count = 0;
 void AWaveSpawner::EightCircleTwinSpiral(float dt, float t)
 {
-	if (num3Count < .075)
+	if (num3Count < .2)
 	{
 		num3Count += dt;
 		return;
@@ -154,7 +156,7 @@ void AWaveSpawner::Ring(float dt)
 		return;
 	}
 	AwaveObj* waveSpawned;
-	int max = 30;
+	int max = 60;
 	for (int x = 0; x < max; x++)
 	{
 		waveSpawned = world->SpawnActor<AwaveObj>(wave, loc, rotation, spawnParams);
