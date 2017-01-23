@@ -37,15 +37,17 @@ void AWaveSpawner::Tick( float DeltaTime )
 		if (levelNum == 1)
 		{
 			Ring(DeltaTime);
-			TwinOval(DeltaTime);
+			PizzaSliceRotatingPulse(DeltaTime, totalTime);
+			
 		}
 		if (levelNum == 2)
 		{
 			SpawnFourLegSpiral(DeltaTime, totalTime);
+			ThirtyTwoCircleHalfMidHalfFloor(DeltaTime);
 		}
 		if (levelNum == 3)
 		{
-			LongPulseStarLines(DeltaTime);
+			EightCircleTwinSpiral(DeltaTime, totalTime);
 		}
 		if (levelNum == 4)
 		{
